@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Explorer</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Movie Explorer</h1>
+
+    <!--Theme Toggle-->
+    <button id="themeToggle">🌙 Dark Mode</button>
+  </header>
+
+  <main>
+    <section class="search-area">
+
+      <!---Accepts User Input -->
+      <input type="text" id="searchInput" placeholder="Search movies (e.g. Inception)" />
+
+      <!--Trigger Search-->
+      <button id="searchBtn">Search</button>
+
+      <!--Status Message-->
+      <p id="statusMessage"></p>
+    </section>
+
+    <!--Displays Feedback-->
+    <section id="results">
+      <h2>Search Results</h2>
+
+      <!--Element to be filled Dynamicaly -->
+      <div id="movieGrid" class="grid"></div>
+    </section>
+
+    <section id="watchlist-section">
+      <h2>My Watchlist (this session only)</h2>
+
+      <!--Dynamically load data for watch list -->
+      <div id="watchlistGrid" class="grid"></div>
+
+      <!--Conditional Watch list messgae conditionl-->
+      <p id="watchlistEmpty">Your watchlist is empty.</p>
+    </section>
+  </main>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
