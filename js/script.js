@@ -20,10 +20,28 @@ const movieGrid = document.getElementById("movieGrid");
 const watchlistGrid = document.getElementById("watchlistGrid");
 const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 
+//==========================================================================
+
 // (2) A Function that handles searches
+function searchOMDb() {
+    return
+}
+//==========================================================================
 
 // (3) A Function that renders the Movie Card
+function renderMovieCard() {
+    return
+}
+//==========================================================================
 
 // (4) A Function that renders the Watch list
+function renderWatchList() {
+    return
+}
+//==========================================================================
 
 // (5) A Function that Toggles the Theme
+function toggleTheme() {
+    return
+}
+//==========================================================================
