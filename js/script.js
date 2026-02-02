@@ -5,7 +5,20 @@
 //Flow
 
 // (1) All variables
-const themeToggle = document.getElementById("")
+// Theme Toggle variable
+const themeToggle = document.getElementById("themeToggle");
+
+// User Input and button 
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+//Status message and Movie grid 
+const statusMessage = document.getElementById("statusMessage");
+const movieGrid = document.getElementById("movieGrid");
+
+//Watch list GRID and STATUS message
+const watchlistGrid = document.getElementById("watchlistGrid");
+const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 
 // (2) A Function that handles searches
 
