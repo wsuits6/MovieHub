@@ -22,9 +22,12 @@ const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 
 //==========================================================================
 
+
+//URL Link
+
 // (2) A Function that handles searches
-function searchOMDb() {
-    return
+async function searchOMDb(url) {
+    // Search  DB api endpoint in URL param
 }
 //==========================================================================
 
