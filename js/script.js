@@ -3,8 +3,6 @@
 //====================
 
 //Flow
-//Importing DOTENV
-import 'dotenv/config';
 
 // (1) All variables
 // Theme Toggle variable
@@ -25,14 +23,37 @@ const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 //==========================================================================
 
 
-//Variables for API Key and BASE URL form env file
-const apikey = process.env.OMDb_API;
-const baseurl = process.env.BASE_URL;
+//Variables for API Key and BASE URL
+const apikey = "16752cf9";
+const baseurl = "http://www.omdbapi.com/?apikey=" + apikey;
 
 // (2) A Function that handles searches
-async function searchOMDb(url) {
-    // Search  DB api endpoint in URL param
+// and implements ERROR handling
+async function searchOMDb(searchTerm) {
+    // Search  OMDb api endpoint in URL param
+    const url = `${baseurl}&s=${encodeURIComponent(searchTerm)}`; // build full URL with search term
+    try {
+        //creating response Var
+        //response should wait until condition is met 
+        const response = await fetch(url);
+
+        //if response.ok is negative perform throw function == >>
+        if (!response.ok) {
+            //Throw HTTP ERROR CODE to the console
+            throw new Error(`HTTP error: ${response.status}`);
+        } 
+
+        //Store response JSON in data VAR
+        const data = await response.json();
+        
+        //return data to console
+        return data;
+    } catch (error) {
+        console.log("Fetch Failed: ", error)
+        return null;
+    }
 }
+
 //==========================================================================
 
 // (3) A Function that renders the Movie Card
