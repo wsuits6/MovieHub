@@ -3,6 +3,8 @@
 //====================
 
 //Flow
+//Importing DOTENV
+import 'dotenv/config';
 
 // (1) All variables
 // Theme Toggle variable
@@ -23,8 +25,9 @@ const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 //==========================================================================
 
 
-//URL Configuration
-
+//Variables for API Key and BASE URL form env file
+const apikey = process.env.OMDb_API;
+const baseurl = process.env.BASE_URL;
 
 // (2) A Function that handles searches
 async function searchOMDb(url) {
