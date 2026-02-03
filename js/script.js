@@ -54,6 +54,10 @@ async function searchOMDb(searchTerm) {
     }
 }
 
+//Checking to see of Data is Loaded form API OMDb
+// const data = await searchOMDb("Batman");
+// console.log(data)
+
 //==========================================================================
 
 // (3) A Function that renders the Movie Card
