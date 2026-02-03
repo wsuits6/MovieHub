@@ -24,7 +24,7 @@ const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 
 
 //URL Configuration
-const url = `[http://www.omdbapi.com/?apikey=[yourkey]&]`
+
 
 // (2) A Function that handles searches
 async function searchOMDb(url) {
