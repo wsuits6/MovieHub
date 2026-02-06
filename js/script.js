@@ -21,81 +21,116 @@ const watchlistGrid = document.getElementById("watchlistGrid");
 const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 
 //==========================================================================
-//==========================================================================
-//==========================================================================
+
+
+
+
+
+//Check User input throougn event listiner
+//click event on searchBtn 
+searchBtn.addEventListener("click", () => {
+
+    //taking User Data fromINput field
+    const searchTerm = searchInput.ariaValueMax.trim(); //removing whitespace from Input string
+
+    //check if user types nothing return Reminder
+    if (searchTerm === " ") {
+        statusMessage.textContent = "Type Something first.";
+        return;
+    }
+
+    //return Searching User Message
+    statusMessage.textContent = "Searching.....";
+
+    //perform Search 
+    searchMOvies(searchTerm)
+})
+
+
 
 //Variables for API Key and BASE URL
 const apikey = "16752cf9";
-const baseurl = "http://www.omdbapi.com/?apikey=" + apikey;
+const baseurl = "https://www.omdbapi.com/?apikey=" + apikey;
 
-// (2) A Function that handles searches
+// (3) A Function that handles searches
 // and implements ERROR handling
-async function searchOMDb(searchTerm) {
-    // Search  OMDb api endpoint in URL param
-    const url = `${baseurl}&s=${encodeURIComponent(searchTerm)}`; // build full URL with search term
+
+// Creating a Search movie Function to OMDb API search 
+// on the parameter term bu Applying it to 
+// BASE URL  and API KEY
+async function searchMOvies(term) {
+    const url = `${baseurl}&=${term}`
+
+    //Error Handling
     try {
-        //creating response Var
-        //response should wait until condition is met 
-        const response = await fetch(url);
+        //reponse Variable Assingned to URL HTTP RESPONSE
+        const reponse = await fetch(url);
+        const data = await Response.json();
 
-        //if response.ok is negative perform throw function == >>
-        if (!response.ok) {
-            //Throw HTTP ERROR CODE to the console
-            throw new Error(`HTTP error: ${response.status}`);
-        } 
+        //Error Handling For No HTTP Response
+        //Data is False
+        if (data.Response === "False") {
 
-        //Store response JSON in data VAR
-        const data = await response.json();
-        
-        //return data to console
-        return data;
-    } catch (error) {
-        console.log("Fetch Failed: ", error)
-        return null;
+            //Assinging Status Messafe to Data Error Response
+            statusMessage.textContent = data.Error;
+
+            //Return Nothing Into the Movie Grid Container
+            movieGrid.innerHTML = "";
+            return
+        }
+
+        //If there is not Error Return nothing to status Message
+        statusMessage.textContent = "";
+
+        //Calling Render Movie Function to Render Data
+        renderMovies(data.Search)
+
+    } catch (error) { // Catching Other Erros 
+        statusMessage.textContent = "Network Problem"
     }
+ } 
+
+
+//==========================================================================
+// (3) Render Movies Function 
+
+function renderMovies(movie) {
+    // The Movie Grid HTML should be Empty
+    movieGrid.innerHTML = "";
+
+    // Creating a Movies Loop
+    movies.forEach(movie => {
+        // Setting movie as parameter for the create Movie Card
+        createMovieCard(movie); //Rendering Movie Contents in Create ovie Function
+    });
 }
 
 //==========================================================================
-//==========================================================================
-//==========================================================================
+// (4) Create Movie Card HTML Function
 
+function createMovieCard(movie) {
+    //creating DIV for card in DOM
+    const card  = document.createElement("");
 
-//Checking to see of Data is Loaded form API OMDb
-// const data = a wait searchOMDb("Batman");
-// console.log(data)
+    //Adding  Class to CARD DIV
+    card.classList.add("movie-card");
 
-//==========================================================================
-//==========================================================================
-//==========================================================================
-
-
-//==========================================================================
-
-// (3) A Function that renders the Movie Card
-
-//Movie Card Function
-function  movieCard(){
-    document.createElement("")
-    
-    //selecting div element 
-    // moviecard = document.getElementById("")
+    //Crating inner Card html Elements 
+    //Html Elements with Data loaded form movie ARRAY
+    card.innerHTML = `
+    <img src="${movie.Poster}" alt="movie Poster">
+    <h3>${movie.Title}</h3>
+    <p>${movie.Year}</p>
+    <button> Add To Watch list</button>
+    `
 }
 
-movieCard()
-function renderMovieCard() {
-        movieTitle = data.movieTitle
-        
-}
-//==========================================================================
 
-// (4) A Function that renders the Watch list
-function renderWatchList() {
-    return
-}
 //==========================================================================
 
 // (5) A Function that Toggles the Theme
 function toggleTheme() {
     return
 }
+
 //==========================================================================
