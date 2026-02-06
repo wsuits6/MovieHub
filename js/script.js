@@ -149,5 +149,43 @@ function addToWatchlist(movie) {
     renderWatchlist();
 }
 
+//==========================================================================
+// (5) Render Function Render Watch list 
+function renderWatchlist() {
+    //Making Sure watch list Grid is Empty with no HTML
+    watchlistGrid.innerHTML = "";
+    
+    //checking if watch list ARRAY is Empty and returning Error
+    if (watchlist.length === 0) {
 
+        //Stying Empty mesage element to display block
+        watchlistEmptyMessage.style.display = "block"
+        return;
+    }
+
+    //setting wathc lsit to none for TRUE reponse
+    watchlistEmptyMessage.style.display = "none";
+
+    //Looping Through movie Array and using index
+    watchlist.forEach((movie, index) => {
+        // creating Item  CArd for movie  Grid 
+        const item = document.createElement("div");
+        //addingn class to item DIV
+        item.classList.add("movie-card");
+
+        //Creating inner HTML elements for DIV
+        item.innerHTML = `
+        <img src=${movie.Poster}">
+
+        `
+
+
+    })
+
+}
+
+//==========================================================================
+//==========================================================================
+//==========================================================================
+//==========================================================================
 //==========================================================================
