@@ -65,7 +65,7 @@ async function searchMOvies(term) {
     //Error Handling
     try {
         //reponse Variable Assingned to URL HTTP RESPONSE
-        const reponse = await fetch(url);
+        const response = await fetch(url);
         const data = await response.json();
 
         //Error Handling For No HTTP Response
