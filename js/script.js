@@ -20,6 +20,10 @@ const movieGrid = document.getElementById("movieGrid");
 const watchlistGrid = document.getElementById("watchlistGrid");
 const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 
+//Variables for API Key and BASE URL
+const apikey = "16752cf9";
+const baseurl = "https://www.omdbapi.com/?apikey=" + apikey;
+
 //Watchlist Array
 let watchlist = [];
 //==========================================================================
@@ -48,12 +52,6 @@ searchBtn.addEventListener("click", () => {
     searchMOvies(searchTerm)
 })
 
-
-
-//Variables for API Key and BASE URL
-const apikey = "16752cf9";
-const baseurl = "https://www.omdbapi.com/?apikey=" + apikey;
-
 // (3) A Function that handles searches
 // and implements ERROR handling
 
@@ -68,7 +66,7 @@ async function searchMOvies(term) {
     try {
         //reponse Variable Assingned to URL HTTP RESPONSE
         const reponse = await fetch(url);
-        const data = await Response.json();
+        const data = await response.json();
 
         //Error Handling For No HTTP Response
         //Data is False
@@ -102,7 +100,7 @@ function renderMovies(movie) {
     movieGrid.innerHTML = "";
 
     // Creating a Movies Loop
-    movies.forEach(movie => {
+    movie.forEach(movie => {
         // Setting movie as parameter for the create Movie Card
         createMovieCard(movie); //Rendering Movie Contents in Create ovie Function
     });
@@ -113,7 +111,7 @@ function renderMovies(movie) {
 
 function createMovieCard(movie) {
     //creating DIV for card in DOM
-    const card  = document.createElement("");
+    const card  = document.createElement("div");
 
     //Adding  Class to CARD DIV
     card.classList.add("movie-card");
@@ -176,9 +174,9 @@ function renderWatchlist() {
 
         //Creating inner HTML elements for DIV
         item.innerHTML = `
-        <img src=${movie.Poster}">
+        <img src="${movie.Poster}">
         <h3>${movie.Title}</h3>
-        <buttom>Remove</button>
+        <button>Remove</button>
         `;
 
         // selecting  all Buttons in item card and adding click event listener
