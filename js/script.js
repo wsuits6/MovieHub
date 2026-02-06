@@ -33,7 +33,7 @@ let watchlist = [];
 searchBtn.addEventListener("click", () => {
 
     //taking User Data fromINput field
-    const searchTerm = searchInput.ariaValueMax.trim(); //removing whitespace from Input string
+    const searchTerm = searchInput.value.trim(); //removing whitespace from Input string
 
     //check if user types nothing return Reminder
     if (searchTerm === " ") {
@@ -176,15 +176,31 @@ function renderWatchlist() {
         //Creating inner HTML elements for DIV
         item.innerHTML = `
         <img src=${movie.Poster}">
+        <h3>${movie.Title}</h3>
+        <buttom>Remove</button>
+        `;
 
-        `
+        // selecting  all Buttons in item card and adding click event listener
+        item.querySelector("button").addEventListener("click", () => {
+            //removing item elements in watchlist
+            watchlist.splice(index, 1);
+        });
+
+        //apending item card to Watch list Grid Contianer
+        watchlistGrid.appendChild(item);
 
 
-    })
+    });
 
 }
 
 //==========================================================================
+// (6) DARK MODE FUNCTION THEME TOGGLEser 
+// If USER clicks on THEME toggle Button
+themeToggle.addEventListener("click", ()=> {
+    //change class list dynamically to toggle theme
+    document.body.classList.toggle("dark-mode");
+})
 //==========================================================================
 //==========================================================================
 //==========================================================================
