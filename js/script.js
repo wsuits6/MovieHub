@@ -20,6 +20,8 @@ const movieGrid = document.getElementById("movieGrid");
 const watchlistGrid = document.getElementById("watchlistGrid");
 const watchlistEmptyMessage = document.getElementById("watchlistEmpty");
 
+//Watchlist Array
+let watchlist = [];
 //==========================================================================
 
 
@@ -138,12 +140,14 @@ function createMovieCard(movie) {
 
 }
 
-
 //==========================================================================
-
-// (5) A Function that Toggles the Theme
-function toggleTheme() {
-    return
+// (4) Add to Watch list fuction 
+// uses render watch list funciton 
+// movie parameter to load contents form render movie
+function addToWatchlist(movie) {
+    watchlist.push(movie);
+    renderWatchlist();
 }
+
 
 //==========================================================================
