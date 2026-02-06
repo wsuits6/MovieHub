@@ -179,10 +179,11 @@ function renderWatchlist() {
         <button>Remove</button>
         `;
 
-        // selecting  all Buttons in item card and adding click event listener
+        // selecting  all Buttons in item card and adding click event listener to remove movie CARD forn GRID
         item.querySelector("button").addEventListener("click", () => {
             //removing item elements in watchlist
             watchlist.splice(index, 1);
+            renderWatchlist()
         });
 
         //apending item card to Watch list Grid Contianer
