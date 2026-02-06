@@ -36,7 +36,7 @@ searchBtn.addEventListener("click", () => {
     const searchTerm = searchInput.value.trim(); //removing whitespace from Input string
 
     //check if user types nothing return Reminder
-    if (searchTerm === " ") {
+    if (searchTerm === "") {
         statusMessage.textContent = "Type Something first.";
         return;
     }
@@ -61,7 +61,8 @@ const baseurl = "https://www.omdbapi.com/?apikey=" + apikey;
 // on the parameter term bu Applying it to 
 // BASE URL  and API KEY
 async function searchMOvies(term) {
-    const url = `${baseurl}&=${term}`
+    const url = `${baseurl}&s=${term}`;
+
 
     //Error Handling
     try {
