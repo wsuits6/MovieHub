@@ -122,7 +122,20 @@ function createMovieCard(movie) {
     <h3>${movie.Title}</h3>
     <p>${movie.Year}</p>
     <button> Add To Watch list</button>
-    `
+    `;
+
+    //selecting a Button Elements in CARD and btn assignning btn
+    const btn = card.querySelector("button");
+
+    //If user clicks on Card button
+    //Call AddToWatch list fucntion
+    btn.addEventListener("click", () => {
+        addToWatchlist(movie);
+    });
+
+    //Appending ELement to moviesGrid ELement As a child
+    movieGrid.appendChild(card);
+
 }
 
 
